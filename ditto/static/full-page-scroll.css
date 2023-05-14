@@ -1,0 +1,237 @@
+:root {
+	--color-black: #000;
+	--color-white: #fff;
+	--time-animation: 0.7s;
+	--height-footer: 120px;
+  }
+  
+  @keyframes pulse {
+	0% {
+	  transform: translateY(0px);
+	}
+	50% {
+	  transform: translateY(25px);
+	}
+	100% {
+	  transform: translateY(0px);
+	}
+  }
+
+  html {
+	scrollbar-width: none;
+
+  }
+  
+  body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: #000;
+	overflow: hidden scroll;
+	-ms-overflow-style: none;
+
+  }
+  
+  body::-webkit-scrollbar {
+	display: none;
+  }
+  
+  .layout {    
+	width: 100%;
+	height: calc(100vh * 3);
+	position: relative;
+	background: linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -webkit-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -moz-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -o-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+
+  }
+  
+
+  .layout .section-stick {
+	margin: auto;
+  
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+  
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+  
+	z-index: 1000;
+  }
+  
+  .layout .section-stick .stick,
+  .layout .section-stick .active {
+	width: 13px;
+	height: 62px;
+  
+	border: none;
+	border-radius: 9px;
+  }
+  
+  .layout .section-stick .stick {
+	position: relative;
+  
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: all var(--time-animation) ease-in-out;
+  }
+  
+  .layout .section-stick .stick:not(:last-child) {
+	margin-bottom: 30px;
+  }
+  
+  .layout .section-stick .active {
+	position: absolute;
+  
+	background-color: var(--color-white);
+	box-shadow: 0px 0px 12px 1px var(--color-white);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+  }
+  
+  .layout section {
+	width: 100%;
+	height: 100vh;
+  
+	position: fixed;
+	top: 100vh;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  
+	text-align: center;
+	color: var(--color-white);
+	font-size: 80px;
+	font-weight: 600;
+  
+	transition: all var(--time-animation) ease-in-out;
+	z-index: 1;
+  }
+  
+  /* .layout section .home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  } */
+  
+  .layout section .home span {
+	margin-bottom: 45px;
+  }
+  
+  .layout section .home svg {
+	animation: pulse 1.4s linear infinite normal;
+  }
+  
+  .layout .s1 {
+	top: 0;
+	/* background: linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%); */
+  }
+  
+  /* .layout .s2 {
+	background-color: #02486b;
+  } */
+  
+  footer {
+	width: 100%;
+	height: var(--height-footer);
+
+	
+	position: fixed;
+	bottom: calc(var(--height-footer) * -1);
+  
+	background: var(--color-black);
+	color: var(--color-white);
+	font-size: 20px;
+  
+	transition: all var(--time-animation) ease-in-out;
+	z-index: 100;
+	
+  }
+/**/
+  footer hr {
+	  margin:0;
+  }
+  
+  footer {
+	background: linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -webkit-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -moz-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+	background: -o-linear-gradient(216.23deg, #494DA9 21.65%, #3C306C 53.58%, #2E112B 78.86%);
+  }
+
+  .footer_container {
+	  padding-top:10px;
+	  display: flex;
+	  flex-direction: row;
+	  
+  
+  }
+  .footer_text {
+	  display: flex;
+	  flex-direction: column;
+  }
+  #copyright {
+	  margin-top: 10px;
+	  font-size: 12px;
+	  margin-bottom: 10px;
+  }
+  .footer_text img {
+	margin-top: 5px;
+	margin-right: 10px;
+  }
+  a {
+	text-decoration: none;
+	color: white;
+  }
+
+  #character {
+	  position:absolute;
+	  right:100px;
+  }
+/**/
+  footer h2 {
+	margin: auto;
+	text-align: center;
+	line-height: var(--height-footer);
+  }
+  
+  body.end .layout {
+	height: calc(100vh + 1px);
+  }
+  
+  /* TODO: conseguir una mejor solucion para esto */
+  body.end .s2 {
+	top: calc(var(--height-footer) * -1) !important;
+  }
+  
+  body.end footer {
+	bottom: 0;
+  }
+  
+  /************************************* RESPONSIVE ***************************************/
+  
+  /* MOBILE */
+  @media screen and (max-width: 576px) {
+	body::-webkit-scrollbar {
+	  width: 0px;
+	  background: transparent;
+	  -webkit-appearance: none;
+	}
+  
+	.layout .section-stick {
+	  right: 20px;
+	  bottom: 20px;
+	  transform: scale(0.7);
+	}
+  
+	.layout section {
+	  font-size: 40px;
+	}
+  }

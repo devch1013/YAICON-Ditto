@@ -1,0 +1,12 @@
+<style>
+    img{
+    
+    width: 20vw;
+}
+</style>
+{% load static %}
+
+{% for o in obj %}
+<img src="/data/{{o.col}}.jpg" alt="">
+<img src="/data/{{o.col}}_sketch.jpg" alt="">
+{% endfor %}

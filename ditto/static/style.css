@@ -1,0 +1,219 @@
+/* @import "reset.css"; */
+
+/* 00.character  */
+.second_section {
+    display: flex;
+    justify-content: space-around;
+    width: 90vw;
+    margin-bottom: 5vh;
+}
+
+.character {
+    margin-top: 10vh;
+}
+
+.character img {
+    width: 22vw;
+}
+
+.ditto_text{
+    font-size: 4rem;
+}
+
+/* 01. drawing */
+.drawing {
+    display: flex;
+    /* flex-flow: row wrap; */
+    justify-content: space-evenly;
+    width: 65vw;
+    height: 78vh;
+    margin-top: 2vh;
+    /* margin-right: 10px; */
+}
+
+/* 1. canvas */
+.left_elem {
+    position: relative;
+    height: 7vh;
+    top: 5vh;
+    z-index: 2;
+}
+.canvas {
+    width: 1042px;
+    height: 677px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+}
+.prompt_input {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top: 4.5vh;
+    left: 3vw;
+    width: 90%;
+    height: auto;
+}
+.prompt_txt {
+    padding-top: 0.6vh;
+    font-family: "Valden";
+    font-weight: 100;
+    font-size: 4vh;
+    color: black;
+    text-align: center;
+}
+#prompt {
+    /* right: 3vw; */
+    width: 70%;
+    height: 5vh;
+    background-color: rgb(217, 217, 217);
+    border-radius: 15px;
+    border: none;
+    /* text-align: center; */
+    font-size: 2.5vh;
+    padding-left: 1vw;
+}
+/* 2. brush control  */
+.controls__brush {
+    display: flex;
+    justify-content: space-around;
+    height: 75vh;
+    width: 9vw;
+}
+/* 2-1. range  */
+.controls__range {
+    position: relative;
+    width: 4vw;
+    height: 72vh;
+    display: flex;
+    align-items: center;
+}
+/* 2-2. color  */
+.controls__colors {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.5vw;
+    height: 75vh;
+}
+
+.controls__colors .controls__color {
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+}
+
+/* 3. buttons */
+.controls__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    margin-left: 5vw;
+    margin-top: 1vh;
+}
+
+.controls__btns {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls__btns button[type="button"] {
+    z-index: 1;
+    all: unset;
+    cursor: pointer;
+    color: white;
+    /* padding: 0.5vw 0px; */
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 2.5vw;
+}
+
+.controls__btns button[type="submit"] {
+    all: unset;
+    cursor: pointer;
+    background: white;
+    color: black;
+    width: auto;
+    text-align: center;
+    font-family: "Valden";
+    font-size: 2vw;
+    border: 6px solid black; /*border-width should be equal to thumbBorderWidth if you want same border width across all browsers and border-color should match the background*/
+    border-radius: 15px;
+    outline: none;
+    padding: 15px 35px 10px 35px;
+}
+
+.controls__btns button:before {
+    font-family: "Font Awesome 5 Free";
+}
+
+.controls__btns button:active {
+    transform: scale(0.98);
+}
+
+/*
+    Range 꾸미기
+*/
+#jsRange {
+    position: absolute;
+    right: -12vw;
+    width: 55vh;
+    margin: auto;
+    height: 2vw;
+    transform: rotate(270deg)!important;
+
+}
+
+  input[type="range"] {
+    /* display: block; */
+    /* position: absolute;
+    width: 100%;
+    height: 100%; */
+    /* width: 100%; */
+    /* height: 4vh; thumbHeight + (2 x thumbBorderWidth) */
+    -webkit-appearance: none; /*remove the line*/
+    outline: none;
+    background-color: transparent;
+    border: 0; /*for firefox on android*/
+    /* padding: 0 8px; for IE */
+    /* margin: 8px 0; */
+    /* transform: rotate(270deg); */
+}
+
+/*chrome and opera*/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #ccc; /*trackColor*/
+    height: 0.7vh; /*trackHeight*/
+    border-radius: 0.7vh; /*trackHeight*/
+    transition: 0.3s;
+}
+
+input[type="range"]:hover::-webkit-slider-runnable-track,
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #777; /*activeTrackColor*/
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: red; /*thumbColor*/
+    width: 35px; /* thumbHeight + (2 x thumbBorderWidth)*/
+    height: 35px; /* thumbHeight + (2 x thumbBorderWidth)*/
+    border-radius: 50%;
+    margin-top: -12px; /* -[thumbHeight + (2 x thumbBorderWidth) - trackHeight]/2*/
+    cursor: pointer;
+    border: 6px solid #ccc; /*border-width should be equal to thumbBorderWidth if you want same border width across all browsers and border-color should match the background*/
+    transition: 0.3s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb,
+input[type="range"]:focus::-webkit-slider-thumb {
+    background: darkOrange; /*activeThumbColor*/
+}
+
+

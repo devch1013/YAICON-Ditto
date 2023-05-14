@@ -1,0 +1,31 @@
+.loading{
+    position: fixed;
+    bottom: 0;
+	width: 100%;
+	height: 1000%;
+	background-color: rgba(0, 0, 0, 0.75);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+    left: 0vmin;
+    top: 0vmin;
+	z-index: 99;
+}
+
+.loading img{
+    position: fixed;
+    top: 23vh;
+	width: 20vw;
+    z-index: 100;
+    left: 45%;
+}
+
+.loading img {animation: rotate_image 2s ease infinite;transform-origin: 50% 50%;}
+
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+}

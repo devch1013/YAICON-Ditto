@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DITTO</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'result.css' %}" type="text/css">
+    <script src="https://kit.fontawesome.com/a5054c9845.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="result-page">
+            <div class="result-left">
+                <div class="result-images">
+                    <img class="character" src="{% static 'imgs/character.png' %}" alt="">
+                    <div class="result-style-box-1 style-box"></div>
+                    <div class="result-style-box-2 style-box"></div>
+                    <div class="result-image">
+                        <img src="/data/{{uuid}}.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="result-right">
+                <img class="sketch-img" src="/data/{{uuid}}_sketch.jpg" alt="">
+                <div class="input-prompt">{{prompt}}</div>
+                <div class="result-buttons">
+                    <a href="/data/{{uuid}}.jpg" download="ditto_result"><button type="button" class="download-button" ><img class="download" src="{% static 'imgs/download.png' %}" alt=""></button></a>
+                    <a href="{% url 'home' %}"><button type="button" class="retry-button"><img class="retry" src="{% static 'imgs/retry.png' %}" alt=""></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

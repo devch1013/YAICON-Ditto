@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DITTO</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'full-page-scroll.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'loading.css' %}" type="text/css">
+    <script src="https://kit.fontawesome.com/a5054c9845.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="layout">
+        <div class="section-stick">
+          <div class="stick active"></div>
+        </div>
+  
+        <!-- First Section -->
+        <section class="s1">
+          <div>
+          <div class="home">
+            <div class="space-box"></div>
+            <div class="home_logo">
+            <div class="home_character">
+            <img src="{% static 'imgs/character.png' %}" alt="">
+            <span class="home-title text">
+              DITTO
+            </span>
+            <p class="home-subtitle text">
+              Doodle to image Translation 
+            </p>
+          </div>
+        </div>
+
+        <div class="home-explanation">
+          <div>
+            <div class="home-style-box-1 style-box">
+              
+
+            </div>
+            <div class="home-style-box-2 style-box">
+            </div>
+          <div class="home-video">
+            {% comment %} <img src="{% static 'imgs/home_video1.mp4' %}" alt=""> {% endcomment %}
+            <video muted autoplay loop>
+              <source src="{% static 'imgs/home_video1.mp4' %}" type="video/mp4">
+              <strong>Your browser does not support the video tag.</strong>
+            </video>
+          </div>
+        </div>
+          <div class="home-text text">
+            <span>
+              Prompt Guided Sketch to Image <br>
+              We applied Controlnet to our web. Enjoy!
+            </span>
+          </div>
+
+        </div>
+        <div class="space-box"></div>
+            <!-- prettier-ignore -->
+          </div>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M5 6l5 5l5-5l2 1l-7 7l-7-7z" fill="#fff"/><rect x="0" y="0" width="20" height="20" fill="rgba(0, 0, 0, 0)" /></svg> -->
+        </div>
+        </section>
+
+        <!-- Second Section -->
+        <section class="s2">
+          <div class="second_section">
+            <!-- 00. character -->
+            <div class="character">
+              <img src="{% static 'imgs/character.png' %}" alt="">
+              <span class="ditto_text text">
+                DITTO
+              </span>
+            </div>
+            <!-- 01. drawing  -->
+            <form action="{% url 'save' %}" method="post" id="next" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="drawing">
+                <!-- 1. canvas -->
+                <div class="left_elem">
+                  <input type="hidden" name="canvas_data" id="canvas_data">
+                  <canvas id="jsCanvas" class="canvas" name="input_canvas"></canvas>
+                  <div class="prompt_input">
+                    <span class="prompt_txt">prompt : </span>
+                    <input type="text" name="prompt" id="prompt">
+                  </div>
+                  
+                </div>
+          
+                <!-- 2. brush control  -->
+                <div class="controls__brush">
+                  <!-- 2-1. range -->
+                  <div class="controls__range">
+                    <input type="range" orient="vertical" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1">
+                  </div>
+                  <!-- 2-2. color -->
+                  <div class="controls__colors" id="jsColors">
+                    <div class="controls__color jsColor" style="background-color: black;"></div>
+                    <div class="controls__color jsColor" style="background-color: white;"></div>
+                    <div class="controls__color jsColor" style="background-color: red;"></div>
+                    <div class="controls__color jsColor" style="background-color: orange;"></div>
+                    <div class="controls__color jsColor" style="background-color: yellow;"></div>
+                    <div class="controls__color jsColor" style="background-color: green;"></div>
+                    <div class="controls__color jsColor" style="background-color: blue;"></div>
+                    <div class="controls__color jsColor" style="background-color: navy;"></div>
+                    <div class="controls__color jsColor" style="background-color: purple;"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 3. buttons -->
+              <div class="controls__bottom">
+                <div class="controls__btns">
+                  <button id="jsMode" type="button"><i class="fa-solid fa-pencil" id="change-icon"></i></button>
+                  {% comment %} <button id="jsEraser" type="button"><i class="fa-solid fa-eraser"></i></button> {% endcomment %}
+                  <button id="jsClear" type="button"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                  <button class="loader" id="jsSave" type="submit">CONVERT</button>
+                </div>
+              </div>
+            </form>
+          </div>
+            
+        </section>
+      </div>
+      <div class="loading">
+        <img src="{% static 'imgs/character.png' %}" alt="">
+      </div>
+      
+      <!-- Footer -->
+      <footer>
+        <hr>
+        <div class="footer_container">
+          <div>
+            <img src="{% static 'imgs/yai.png' %}" width="170" height=auto alt="">
+          </div>
+          <div class="footer_text">
+            <span><img src="{% static 'imgs/email.png' %}" width="25" height=auto alt=""> ditto@yonsei.ac.kr</span>
+            <span><img src="{% static 'imgs/github.png' %}" width="25" height=auto alt=""><a href="https://github.com/devch1013/YAICON-Ditto">https://github.com/devch1013/YAICON-Ditto</a></span>
+            <span id="copyright">Copyright © 2023 YAI.co.,Ltd. All rights reserved.</span>
+          </div>
+          <div id="character">
+            <img src="{% static 'imgs/character.png' %}" width="85" height=auto alt="">
+          </div>
+        </div>
+      </footer>
+    
+
+    <script type="text/javascript" src="/static/full-page-scroll.js"></script>
+    <script type="text/javascript" src="/static/drawing.js"></script>
+    <script type="text/javascript" src="/static/loading.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,6 @@
+staticfiles
+db.sqlite3
+data/*
+*.pyc
+*.ckpt
+*.pth

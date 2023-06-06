@@ -1,9 +1,22 @@
 <img src="https://github.com/devch1013/YAICON-Ditto/blob/main/imgs/DITTO.png" width = "900" >
 
 
-# DITTO: Doodle to Image Web Project
+# DITTO: Doodle to Image Translation Web Project
 
-Team Members: 박지호, 박찬혁, 안정우, 이수민, 장윤호, 최정우
+## :confetti_ball: YAICON 1st Prize!! :confetti_ball: 
+
+
+## Members 
+- 박지호: AI, BE 
+- 박찬혁: PM, BE Lead 
+- 안정우: Data, AI 
+- 이수민: FE Lead, AI 
+- 장윤호: Data, AI 
+- 최정우: AI Lead
+  
+---
+</br>
+</br>
 
 - This is [ControlNet](https://github.com/lllyasviel/ControlNet)(Latent Diffusion) Web Application Project
 - Our model generates high quality Image from prompt guided Doodle.
@@ -51,10 +64,15 @@ We have chose [`PhotoSketch`](https://github.com/mtli/PhotoSketch), which was ge
 ## How to Run
 
 
-
+1. Create conda virtual environment using environment.yaml
+```
+    conda env create --file environment.yaml
 ```
 
+2. Move to cloned folder and start django prototype server
 ```
-
+    python3 manage.py runserver --noreload
+```
+3. Access to localhost:8000 and enjoy!
 
 <img src="https://github.com/devch1013/YAICON-Ditto/blob/main/imgs/front4.png" >

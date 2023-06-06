@@ -24,16 +24,11 @@ class MainControlNet:
 
     def load_model(self):
         
-        # model_name = 'control_v11p_sd15_scribble'
         base_model_name = "cldm_v15"
-        control_name = 'control_sd15_scribble'
-        
-        # checkpoint = torch.load("ditto/ai_models/models/checkpoints/epoch=5-step=7243.ckpt")
+        control_name = 'controlnet_final.pth'
 
         self.model = create_model(f'ditto/ai_models/models/{base_model_name}.yaml').cpu()
-        self.model.load_state_dict(load_state_dict(f'ditto/ai_models/models/{control_name}.pth', location='cuda'), strict=False)
-        # self.model.load_state_dict(load_state_dict('ditto/ai_models/models/checkpoints/epoch=5-step=7243.ckpt', location='cuda'), strict=False)
-        # self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.model.load_state_dict(load_state_dict(f'ditto/ai_models/models/{control_name}', location='cuda'), strict=False)
         self.model = self.model.cuda()
         
         # For Inference

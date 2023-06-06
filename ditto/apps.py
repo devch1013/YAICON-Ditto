@@ -7,6 +7,3 @@ class DittoConfig(AppConfig):
     name = 'ditto'
     model = MainControlNet()
     
-    # def ready(self):
-    #     from ditto.jobs import updater
-    #     updater.start()

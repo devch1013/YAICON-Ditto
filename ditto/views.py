@@ -35,19 +35,9 @@ def save(request):
         
         decoded_img = base64.b64decode(imagefield_img.split(',')[1])
         pil_img = Image.open(io.BytesIO(decoded_img)).convert("RGB")
-        # time.sleep(2)
-        # if queue_config:
-        #     pil_img.save(f"data/{col}_sketch.jpg")
-        #     queue = InferenceQueue(canvas=data)
-        #     queue.save()
-        #     return JsonResponse({"col":col})
-        # else:
         np_img = np.array(pil_img)
         inference(col, np_img, prompt)
         
-    
-        
-         ## inference
         
         return HttpResponseRedirect(f"/result/{col}")
     return render(request, 'home.html')
@@ -75,8 +65,6 @@ def test_inference(request):
         new_data.prompt = prompt
         new_data.save()
         return HttpResponseRedirect(f"/result/{new_col}")
-    
-    
     return render(request, 'test_inference.html')
 
 
@@ -84,7 +72,6 @@ def test_inference(request):
 def inference(col, np_img, prompt):
     with th:
         result_image = DittoConfig.model.inference(np_img, prompt)  
-    # result_image = [np_img, np_img]
     sketch_input = Image.fromarray(result_image[0])
     result_image = Image.fromarray(result_image[1])
     

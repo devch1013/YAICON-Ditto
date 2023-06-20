@@ -20,7 +20,7 @@
 
 - This is [ControlNet](https://github.com/lllyasviel/ControlNet)(Latent Diffusion) Web Application Project
 - Our model generates high quality Image from prompt guided Doodle.
-- To enhance the Doodle to Image performance, we fine-tuned ControlNet using `SDU Caption` dataset.
+- To enhance the Doodle to Image performance, we fine-tuned ControlNet using `SBU Captions` dataset.
 - This is the result of our web
 <p align = "center">
 <img src = "https://github.com/devch1013/YAICON-Ditto/blob/main/imgs/video.gif" width ="450" align = "center">
